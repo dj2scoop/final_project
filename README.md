@@ -34,6 +34,7 @@ Final Project Outcome:
 * Login system.
 * Create User system.
 * User can Enter keywords in Search field.
+* User can break search view if they submit a search before signing in.
 * Search is not actually performed.
 * Result is error.
 * Was not able to get YouTube API working.
