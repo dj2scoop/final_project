@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Video</h1>
+{% if video|length > 0 %}
+<ul id="video">
+    <h2>This should be your video.</h2>
+</ul>
+{% else %}
+<p>Oops! This is quite embarrasing. It seems we have lost your video.
+<a href="{% url "search_form" %}">Back To Search</a><a href="{% url "result_list" %}">Back To Results</a>
+</p>
+{% endif %}
+{% endblock %}

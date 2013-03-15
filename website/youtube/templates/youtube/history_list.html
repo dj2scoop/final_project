@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search History</h1>
+{% if searches|length > 0 %}
+<ul id="searches">
+  {% for search in searches %}
+  <li>
+    <div class="search">
+      <h2><strong>Search Date:</strong> {{search.pub_date}}</h2>
+      <h3>{{ search.search }}</h3>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No results found.  Try Again?
+<a href="{% url "search_form" %}">Back to Search</a>
+</p>
+{% endif %}
+{% endblock %}

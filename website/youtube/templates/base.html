@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ViewTube</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/youtube.css">
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <ul id="control-bar">
+          {% if user.is_authenticated %}
+          <li>Logged in as: {{user.username}} | </li>
+           {% if user.is_staff or request.user.is_superuser %}
+            <li><a href="{% url "admin:index" %}">Admin</a></li>
+           {% endif %}
+            <li><a href="{% url "history_list" %}">View History</a></li>
+            <li><a href="{% url "logout" %}">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url "login" %}">Log In</a></li>
+            <li><a href="{% url "registration_register" %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div id="content">
+      {% if messages %}
+       {% for message in messages %}
+       <p class="notification{% if message.tags %} {{ message.tags }}{% endif %}">
+         {{ message }}</p>
+       {% endfor %}
+      {% endif %}
+      {% block content %}
+      {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
